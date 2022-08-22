@@ -43,7 +43,7 @@ public class WebControls extends WebDriverHelper{
                 } catch (Exception e) {
                     return null;
                 }
-            case "linkText":
+            case "linktext":
                 try {
                     ele = driver.findElement(By.linkText(values[1].toString()));
                     return ele;
@@ -204,5 +204,13 @@ public class WebControls extends WebDriverHelper{
 
 
         }
+    }
+    public static  boolean isElementPresent(String ElementProperty)
+    {
+        boolean flag = false;
+        WebElement ele = createObject(ElementProperty);
+        if(ele!=null)
+            flag=true;
+        return flag;
     }
 }

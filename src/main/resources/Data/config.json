@@ -1,5 +1,5 @@
 {
-  "Environment": "qavenus",
+  "Environment": "qamercury",
   "Browser": "CH",
   "NewSession": "true",
   "Environments": [
@@ -29,6 +29,13 @@
        "url": "https://qavenus.workforcelogiq.com/Login/Login",
        "driverclassname":"com.microsoft.sqlserver.jdbc.SQLServerDriver",
        "connectionString": "jdbc:sqlserver://qa-sqlmi2-eastus.e796c9768f7f.database.windows.net:1433;database=qa-sqldb-venus-eastus;user=automation-user-vms-eastus;password=jyu+-g8HpDY3mU3C;multipleActiveResultSets=False;encrypt=True;trustServerCertificate=False;loginTimeout=30"
+
+    },
+    {
+      "enviorment": "qamercury",
+      "url": "https://qamercury.workforcelogiq.com/Login/Login",
+      "driverclassname":"com.microsoft.sqlserver.jdbc.SQLServerDriver",
+      "connectionString": "jdbc:sqlserver://qa-sqlmi-eastus.e796c9768f7f.database.windows.net:1433;database=qa-sqldb-venus-eastus;user=automation-user-vms-eastus;password=jyu+-g8HpDY3mU3C;multipleActiveResultSets=False;encrypt=True;trustServerCertificate=False;loginTimeout=30"
 
     }
   ]

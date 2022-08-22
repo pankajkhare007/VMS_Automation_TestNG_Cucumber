@@ -11,7 +11,7 @@ public class Reports {
     static String a2Path;
     public static void moveallureresult()  {
 
-        DateTimeFormatter dtn = DateTimeFormatter.ofPattern("DDMMYYHHMMSS");
+        DateTimeFormatter dtn = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
         LocalDateTime now = LocalDateTime.now();
         String datetime = "Result" + dtn.format(now);
         String aPath = System.getProperty("user.dir") + "\\allure-results\\";

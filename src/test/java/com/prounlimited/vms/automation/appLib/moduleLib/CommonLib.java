@@ -63,6 +63,19 @@ public class CommonLib {
 
     public static void clickOnLinkByText(String linkText)
     {
-        WebControls.clickonObject("linkText="+linkText,linkText);
+        WebControls.clickonObject("linktext="+linkText,linkText);
+    }
+
+    public static void slowmotionSendKeys(WebElement ele ,String text)
+    {
+        String val = text;
+        ele.clear();
+        for (int i=0;i < val.length(); i++)
+        {
+            char c = val.charAt(i);
+            String  s=new StringBuffer().append(c).toString();
+            ele.sendKeys(s);
+            CommonLib.handleLoadingImage();
+        }
     }
 }

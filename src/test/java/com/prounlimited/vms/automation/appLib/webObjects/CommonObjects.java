@@ -10,4 +10,6 @@ public class CommonObjects {
     public static  String linkCustomers = "xpath=//a[contains(text(),'Customers')]";
     public static  String linkDivisions = "xpath=//a[contains(text(),'Divisions')]";
     public static String btnRunSearch="xpath=//a[@class='btn btn-primary search applyfilterbtn']";
+    public static String linkProfileIcon="xpath= //a[@class='user-profile color-light-blue icon-dropdown-arrow zc-tooltip']";
+    public static String linkLogout="xpath=//a[@id='logout']";
 }

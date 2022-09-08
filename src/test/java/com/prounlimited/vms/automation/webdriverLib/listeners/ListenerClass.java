@@ -13,7 +13,7 @@ public class ListenerClass extends WebDriverHelper implements ITestListener, ISu
 
     public void onFinish(ISuite suite) {
 
-      //  Reports.moveallureresult();
+       Reports.moveallureresult();
     }
 
     public void onTestStart(ITestResult result) {
@@ -23,6 +23,9 @@ public class ListenerClass extends WebDriverHelper implements ITestListener, ISu
         driver.close();
     }
     public void onTestFailure(ITestResult result) {
+        driver.close();
+    }
+    public void onTestSuccess(ITestResult result) {
         driver.close();
     }
 }

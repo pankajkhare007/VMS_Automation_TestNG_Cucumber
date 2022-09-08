@@ -3,6 +3,7 @@ package com.prounlimited.vms.automation.stepDefinitions.division;
 import com.prounlimited.vms.automation.appLib.dataInit.ExcelSheets;
 import com.prounlimited.vms.automation.appLib.dataInit.Global;
 import com.prounlimited.vms.automation.appLib.dataInit.RunSetting;
+import com.prounlimited.vms.automation.appLib.moduleLib.CommonLib;
 import com.prounlimited.vms.automation.appLib.moduleLib.DivisionLib;
 import com.prounlimited.vms.automation.appLib.webObjects.DivisionObjects;
 import com.prounlimited.vms.automation.utility.Assertions;
@@ -22,12 +23,12 @@ import java.util.Map;
 public class DivisionStepDefinitions {
 
     @Then("Navigate to client detail page")
-    public void navigateToCleientDetailPage()
+    public void navigateToClientDetailPage()
     {
-        RunSetting.TestDataFile ="Pre_Requisite.xlsx";
-        List<Map<String,String>> excelDataList= ExcelReader.getExcelRowsdata(RunSetting.TestDataFile, ExcelSheets.Project.toString(),"sTestCaseID="+RunSetting.scenarioName);
+        //RunSetting.TestDataFile ="Pre_Requisite.xlsx";
+        List<Map<String,String>> excelDataList= ExcelReader.getExcelRowsdata(RunSetting.TestDataFile, RunSetting.sheetName,"sTestCaseID="+RunSetting.scenarioName);
         Global.testData=excelDataList.get(0);
-        Global.clientName= excelDataList.get(0).get("ClientName");
+       // Global.clientName= excelDataList.get(0).get("ClientName");
         Global.clientID= Utils.doubleToString(excelDataList.get(0).get("ClientID"));
         DivisionLib.navigateToClientDetailPage();
     }
@@ -77,4 +78,31 @@ public class DivisionStepDefinitions {
             Assertions.valueIsNotNull(sObj,"Approval manager is not added");
         }
     }
+
+    @And("Navigate to approval setup page")
+    public void navigateToApprovalSetupPage()
+    {
+        DivisionLib.naviageToApprovalWorkflowDetailPage();
+    }
+
+    @Then("Create new approval workflow")
+    public void createNewApprovalWorkflow()
+    {
+        DivisionLib.createNewApprovalWorkflow();
+
+    }
+    @And("Insert Steps into new approval workflow")
+    public void insertStepsIntoNewApprovalWorkflow()
+    {
+        DivisionLib.selectObjectInNewApprovalWorkflow(Global.testData.get("sObjectName"));
+        DivisionLib.insertStepsIntoApprvalWorkflow();
+
+    }
+    @Then("Create new approval workflow for amend type")
+    public void createNewApprovalWorkflowForAmendType()
+    {
+        DivisionLib.createNewApprovalWorkflowDropDownValue();
+
+    }
+
 }

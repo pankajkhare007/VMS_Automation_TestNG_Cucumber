@@ -7,7 +7,7 @@ import org.testng.annotations.Listeners;
 @CucumberOptions(glue = {"com.prounlimited.vms.automation.stepDefinitions"},
         features ={"src/test/resources/Features"},
         plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        tags = ("@AddAutomationGroup_WyndhamWorldwide"))
+        tags = ("@AWF3_GuideWellGroupInc"))
 
 @Listeners(com.prounlimited.vms.automation.webdriverLib.listeners.ListenerClass.class)
 public class TestLocalRunner extends AbstractTestNGCucumberTests {

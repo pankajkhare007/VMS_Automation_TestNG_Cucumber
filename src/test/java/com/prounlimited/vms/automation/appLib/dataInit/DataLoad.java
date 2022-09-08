@@ -13,6 +13,7 @@ public class DataLoad {
     {
         String en= JsonReader.getJSONObjectContent("Environment");
         RunSetting.Browser =JsonReader.getJSONObjectContent("Browser");
+        RunSetting.newSession =JsonReader.getJSONObjectContent("NewSession");
         RunSetting.URL =JsonReader.getJsonMatchingObjectContent(en, "Environments", "url");
         RunSetting.dbUrl=JsonReader.getJsonMatchingObjectContent(en, "Environments", "dburl");
 

@@ -4,6 +4,7 @@ public class RunSetting {
 
     public static String URL ;
     public static String Browser;
+    public static String newSession;
     public static String scenarioName ;
 
     public static String driverClassName;
@@ -11,5 +12,6 @@ public class RunSetting {
     public static String dbUsername;
     public static String dbPassword;
     public static String TestDataFile;
+    public static String sheetName;
     public static String connectionString;
 }

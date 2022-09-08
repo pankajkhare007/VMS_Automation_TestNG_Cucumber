@@ -19,4 +19,10 @@ public class Assertions {
     {
         Assert.assertNotNull(value,errorMessage);
     }
+
+    @Step("Check '{value}' value is true")
+    public static void valueIsTure(boolean value,String message)
+    {
+        Assert.assertTrue(value,message);
+    }
 }

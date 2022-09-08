@@ -5,6 +5,7 @@ import com.prounlimited.vms.automation.appLib.moduleLib.CommonLib;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 
 public class CommonStepDefinitions {
 
@@ -16,7 +17,14 @@ public class CommonStepDefinitions {
       RunSetting.scenarioName = scenario.getName();
 
     }
-    @Given("login as admin")
+
+    @Then("^Use excelsheet \"([^\"]*)\" and sheet \"([^\"]*)\"$")
+    public void assignExcelSheetNameAndSheetName(String excelSheetName,String sheetName)
+    {
+        RunSetting.TestDataFile = excelSheetName;
+        RunSetting.sheetName = sheetName;
+    }
+    @Given("^login as admin$")
     // @Given("login as admin")
     public void login_as_admin() {
 

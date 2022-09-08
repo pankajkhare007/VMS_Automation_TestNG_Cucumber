@@ -1,5 +1,6 @@
 package com.prounlimited.vms.automation.webdriverLib.driverManager;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -56,7 +57,7 @@ public class WebControls extends WebDriverHelper{
 
     }
 
-    public static List<WebElement> CreateObjects(String ValueofElement) {
+    public static List<WebElement> createObjects(String ValueofElement) {
 
         List<WebElement> ele;
         String[] values = ValueofElement.split("=", 2);
@@ -91,21 +92,24 @@ public class WebControls extends WebDriverHelper{
 
     }
 
-
-    public static void clickonObject(String ValueofElement, String report)  {
+    @Step("Clicked on '{report}' button")
+    public static boolean clickonObject(String ValueofElement, String report)  {
         WebElement ele = createObject(ValueofElement);
+        boolean flag =false;
         if ((ele != null) && (ele.isEnabled())) {
             ele.click();
+            flag=true;
             // ReportCommonMethods.TestStep(report);
         } else {
             System.out.println("Element is not clickable");
             //   ReportCommonMethods.Verification("Fail", "Element is not clickable");
+            flag =false;
 
         }
-
+        return  flag;
     }
 
-
+    @Step("Entered '{DetailforReports}' text")
     public static void setValueOnEditBox(String ValueofElement, String InputVlaue, String DetailforReports)
     {
         WebElement ele = createObject(ValueofElement);
@@ -141,7 +145,7 @@ public class WebControls extends WebDriverHelper{
         je.executeScript("arguments[0].scrollIntoView(true);", ele);
     }
 
-    public static void waitforElement(String ElementProperty , String Report) {
+    public static void waitforElement(String ElementProperty) {
 
         try {
 
@@ -161,27 +165,76 @@ public class WebControls extends WebDriverHelper{
                     break;
             }
         } catch (Exception e) {
-            //  ReportCommonMethods.TestStep("Element not found " + Report);
+            System.out.println("Element is not visible");
         }
     }
 
-    public static void SelectValuefromDoropDownByText(String ElementProperty, String SelectionOfValue)
+    public static void waitforElementClickable(String ElementProperty) {
 
-            throws InterruptedException {
+        try {
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            String[] values = ElementProperty.split("=", 2);
+
+            switch (values[0].toString().toLowerCase()) {
+
+                case "xpath":
+                    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(values[1].toString())));
+                    // ReportCommonMethods.TestStep("Element found by xpath which is " + Report );
+                    break;
+
+                case "id":
+                    wait.until(ExpectedConditions.elementToBeClickable(By.id(values[1].toString())));
+                    //   ReportCommonMethods.TestStep("Element found by id " + Report);
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Element is not clickable");
+        }
+    }
+
+
+    public static void waitforElementSelectable(String ElementProperty) {
+
+        try {
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            String[] values = ElementProperty.split("=", 2);
+
+            switch (values[0].toString().toLowerCase()) {
+
+                case "xpath":
+                    wait.until(ExpectedConditions.elementToBeSelected(By.xpath(values[1].toString())));
+                    // ReportCommonMethods.TestStep("Element found by xpath which is " + Report );
+                    break;
+
+                case "id":
+                    wait.until(ExpectedConditions.elementToBeSelected(By.id(values[1].toString())));
+                    //   ReportCommonMethods.TestStep("Element found by id " + Report);
+                    break;
+            }
+        } catch (Exception e) {
+           System.out.println("Element is not selectable");
+        }
+    }
+    @Step("Select by '{SelectionOfValue}' text")
+    public static void selectValuefromDoropDownByText(String ElementProperty, String SelectionOfValue)
+
+             {
         WebElement ele = createObject(ElementProperty);
         Select se = new Select(ele);
         se.selectByVisibleText(SelectionOfValue);
-        Thread.sleep(500);
+
 
     }
 
-    public static void SelectValuefromDoropDownByIndex(String ElementProperty, int Index)
+    public static void selectValuefromDoropDownByIndex(String ElementProperty, int Index)
 
             throws InterruptedException {
         WebElement ele = createObject(ElementProperty);
         Select se = new Select(ele);
         se.selectByIndex(Index);
-        Thread.sleep(500);
+
 
     }
 

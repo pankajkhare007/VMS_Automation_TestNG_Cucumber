@@ -132,16 +132,21 @@ public class ExcelReader {
             {
                 rowNumberWithCon2++;
                 cell =sheet.getRow(is).getCell(headerColNum2-1);
-
-                CellType cTs=cell.getCellType();
-                if(cTs.equals(CellType.STRING))
+                if(cell!=null)
                 {
-                    actualValue=cell.getStringCellValue();
+                    CellType cTs=cell.getCellType();
+                    if(cTs.equals(CellType.STRING))
+                    {
+                        actualValue=cell.getStringCellValue();
+                    }
+                    else
+                    {
+                        actualValue =cell.getNumericCellValue()+"";
+                    }
                 }
                 else
-                {
-                    actualValue =cell.getNumericCellValue()+"";
-                }
+                    actualValue = "";
+
                 if(actualValue.equals(value2))
                 {
 
@@ -247,15 +252,21 @@ public class ExcelReader {
                     colNumber1++;
                     String actualHeader=it1.next().getStringCellValue();
                     cell =sheet.getRow(rowNumber).getCell(colNumber1-1);
-                    CellType cT1=cell.getCellType();
-                    if(cT1.equals(CellType.STRING))
+                    if(cell!=null)
                     {
-                        actualValue1=cell.getStringCellValue();
+                        CellType cT1=cell.getCellType();
+                        if(cT1.equals(CellType.STRING))
+                        {
+                            actualValue1=cell.getStringCellValue();
+                        }
+                        else
+                        {
+                            actualValue1 =cell.getNumericCellValue()+"";
+                        }
                     }
                     else
-                    {
-                        actualValue1 =cell.getNumericCellValue()+"";
-                    }
+                        actualValue1="";
+
                     RowValues1.add(col, actualValue1);
                 }
                 count++;

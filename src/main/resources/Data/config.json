@@ -37,6 +37,13 @@
       "driverclassname":"com.microsoft.sqlserver.jdbc.SQLServerDriver",
       "connectionString": "jdbc:sqlserver://qa-sqlmi-eastus.e796c9768f7f.database.windows.net:1433;database=qa-sqldb-venus-eastus;user=automation-user-vms-eastus;password=jyu+-g8HpDY3mU3C;multipleActiveResultSets=False;encrypt=True;trustServerCertificate=False;loginTimeout=30"
 
+    },
+    {
+      "enviorment": "qajupiter",
+      "url": "https://qajupiter.workforcelogiq.com/Login/Login",
+      "driverclassname":"com.microsoft.sqlserver.jdbc.SQLServerDriver",
+      "connectionString": "jdbc:sqlserver://qa-sqlmi-eastus.e796c9768f7f.database.windows.net:1433;database=qa-sqldb-venus-eastus;user=automation-user-vms-eastus;password=jyu+-g8HpDY3mU3C;multipleActiveResultSets=False;encrypt=True;trustServerCertificate=False;loginTimeout=30"
+
     }
   ]
 }

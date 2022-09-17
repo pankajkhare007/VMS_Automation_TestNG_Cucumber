@@ -1,3 +1,4 @@
+@Project_PreRequisite @Regression
 Feature: Create Approval Group
 
   @ApprovalGroup @Project_PreRequisite_1 @AddApprovalGroup1_GuideWellGroupInc

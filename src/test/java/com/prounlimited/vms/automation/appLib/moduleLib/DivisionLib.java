@@ -142,7 +142,7 @@ public class DivisionLib {
         Assertions.valueIsTure(flag,"Close button of instert popup is clicked");
         WebControls.clickonObject(DivisionObjects.btnFinalCloseAWF,"Close pupup");
         CommonLib.handleLoadingImage();
-        CommonLib.logout();
+        //CommonLib.logout();
 
     }
     public static void clickOnAddApprvalWorkflow()

@@ -36,11 +36,12 @@ public class WebDriverHelper {
                 {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    executor = (HttpCommandExecutor) ((RemoteWebDriver) driver).getCommandExecutor();
-                    sUrl = executor.getAddressOfRemoteServer();
-                    session_id = ((RemoteWebDriver) driver).getSessionId();
-                    SetGetSessionURL.setURLText(sUrl+"");
-                    SetGetSessionURL.setSessionIDText(session_id+"");
+//                    executor = (HttpCommandExecutor) ((RemoteWebDriver) driver).getCommandExecutor();
+//                    sUrl = executor.getAddressOfRemoteServer();
+//                    session_id = ((RemoteWebDriver) driver).getSessionId();
+//                    SetGetSessionURL.setURLText(sUrl+"");
+//                    SetGetSessionURL.setSessionIDText(session_id+"");
+                    System.out.println("New driver session");
                 }
                else if(RunSetting.newSession.equals("false"))
                 {
@@ -56,6 +57,7 @@ public class WebDriverHelper {
                     /// driver2 = createDriverFromSession(new SessionId(System.getenv("session_id")), new URL(System.getenv("url")));
                     //driver2 = createDriverFromSession(session_id, url);
                     driver = (WebDriver)driver2;
+                    System.out.println("Existing driver session");
                 }
                 break;
 

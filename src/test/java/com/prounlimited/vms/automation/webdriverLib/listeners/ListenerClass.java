@@ -20,7 +20,7 @@ public class ListenerClass extends WebDriverHelper implements ITestListener, ISu
         launchBrowser(RunSetting.Browser, RunSetting.URL);
     }
     public void onFinish(ITestContext context) {
-        driver.close();
+      //  driver.close();
     }
     public void onTestFailure(ITestResult result) {
         driver.close();
